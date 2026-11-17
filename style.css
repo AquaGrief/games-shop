@@ -1,0 +1,694 @@
+* {
+margin: 0;
+list-style: none;
+text-decoration: none;
+}
+
+.header {
+    /* Жидкое стекло для фона шапки */
+    backdrop-filter: blur(16px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(125, 12, 255, 0.644);
+    
+    /* Чтобы контент был поверх */
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    justify-content: flex-start;
+    background: linear-gradient(90deg, #00106c #000000);
+}
+.header h1:hover,
+.header h2:hover{
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.header h1, .header h2 {
+    color: #ffffff;
+    text-shadow: 0 2px 9px rgba(0, 67, 130, 0.265);
+    margin: 0;
+    white-space: nowrap;
+}
+
+.header-container{
+    width: 1000px;
+    background-color: #00000000;
+    display: flex;
+    gap: 25px;
+    justify-content: flex-end;
+}
+
+body {
+    background: linear-gradient(312deg, #00106c, #000000);
+    min-height: 100vh; 
+}
+
+ul {
+    display: flex;
+    gap: 15px;
+    padding: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+
+li {
+    flex: 0 0 auto;
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} 
+
+li img{
+    transition: 0.3s;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 25%;
+    opacity: 1;
+}
+
+li img:hover{
+    transform: translateY(-19px);
+    opacity: 0.6;
+    transition: 0.5s;
+    cursor: pointer;
+    border-radius: 40%;
+    padding: 4px;
+}
+
+.main {
+    background: linear-gradient(#102dd5, #04044d);
+    display: flex;
+    align-items: center;
+    height: 129px;
+    gap: 100px;
+}
+
+/* =========================================
+   БЛОК GTA 6 (ПРОМО-БАННЕР)
+   ========================================= */
+   .gta6 {
+    position: relative; /* Чтобы текст ложился поверх фона */
+    width: 100%;
+    height: 100%;
+    max-width: 1400px;  /* Ограничиваем ширину, чтобы не растягивалось на огромных экранах */
+    overflow: hidden;   /* Обрезаем всё, что вылезает за края */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8); /* Мощная тень для объема */
+    
+    /* Делаем картинку фоном */
+    background-image: url('./photos/Jason_and_Lucia_Robbery_With_Logo_landscape.0sjdgaq91u2yn.jpg');
+    background-size: cover;
+    
+    /* Выравниваем текст по центру */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px; /* Внутренние отступы (чтобы текст не прилипал к краям) */
+    min-height: 600px;  /* Минимальная высота баннера */
+}
+
+/* Прячем оригинальную картинку из HTML (она нам больше не нужна, так как мы сделали её фоном) */
+.gta6 > img {
+    display: none;
+}
+
+/* Затемнение поверх картинки, чтобы белый текст было легко читать */
+.gta6::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    /* Градиент: сверху чуть темнее, снизу вообще темно */
+    background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.8) 100%);
+    z-index: 1; 
+}
+
+/* Настраиваем текст, чтобы он был ПОВЕРХ затемнения */
+.gta6 h1, 
+.gta6 h2 {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    text-transform: uppercase; /* Все буквы заглавные */
+    margin: 10px 0;
+}
+
+/* =========================================
+   СТИЛИЗАЦИЯ ЗАГОЛОВКОВ
+   ========================================= */
+
+/* Главный заголовок */
+.gta6 h1 {
+    font-family: 'Bebas Neue', sans-serif; /* Узкий шрифт в стиле GTA */
+    font-size: 72px; /* Очень крупный */
+    color: #ffffff;
+    letter-spacing: 4px; /* Расстояние между буквами */
+    line-height: 1.1;
+    
+    /* Эффект неонового свечения (Розовый и Синий) */
+    text-shadow: 
+        0 0 10px rgba(255, 20, 147, 0.8),  /* Розовый */
+        0 0 20px rgba(255, 20, 147, 0.6),
+        0 0 30px rgba(41, 84, 194, 0.8);   /* Синий */
+}
+
+/* Подзаголовки */
+.gta6 h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #e0e0e0; /* Светло-серый, чтобы не перебивать главный заголовок */
+    letter-spacing: 2px;
+    margin-top: 15px;
+}
+
+/* Строчка со скидкой (последний h2) */
+.gta6 h2:last-child {
+    color: #ff1493; /* Ярко-розовый (Vice City) */
+    font-size: 26px;
+    font-weight: 800;
+    margin-top: 25px;
+    background: rgba(255, 20, 147, 0.15); /* Легкая розовая подложка */
+    padding: 10px 25px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 20, 147, 0.5); /* Розовая рамка */
+    text-shadow: 0 0 10px rgba(255, 20, 147, 0.5); /* Свечение текста */
+}
+
+.button{
+    background: rgba(255, 20, 147, 0.5);
+    border-radius: 20px;
+    width: 350px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 700;
+    color: #000000;
+    position: relative;
+    text-decoration-style: double;
+}
+
+.download {
+    backdrop-filter: blur(16px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgb(125, 12, 255);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+    list-style: circle;
+    width: 1397px;
+    height: 500px;
+    border: solid 2px rgba(255, 255, 255, 0.368);
+}
+
+.download h1{
+    font-size: 100px;
+    margin-bottom: 100px;
+    font-family: 'Bebas Neue', sans-serif; /* Узкий шрифт в стиле GTA */
+    font-size: 72px; /* Очень крупный */
+    color: #ffffff;
+    letter-spacing: 4px; /* Расстояние между буквами */
+    line-height: 1.1;
+    
+    /* Эффект неонового свечения (Розовый и Синий) */
+    text-shadow: 
+        0 0 10px rgba(255, 20, 147, 0.8),  /* Розовый */
+        0 0 20px rgba(255, 20, 147, 0.6),
+        0 0 30px rgba(41, 84, 194, 0.8);   /* Синий */
+}
+
+.download-buttons{
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+}
+
+.button-dwnld{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background: rgba(0,0,0,0.4);
+    border: 2px solid #68686873;
+    border-radius: 10px;
+    width: 500px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    white-space: nowrap;
+    font-weight: 900;
+    color: #ffffff;
+    position: relative;
+    text-decoration-style: double;
+    text-shadow: 0 9px 8px #000ac3;
+    transition: 0.2s;
+}
+
+.button-dwnld:hover{
+    width: 550px;
+    height: 250px;
+    transition: 0.4s;
+    box-shadow: 0 0 20px #00f0ff, 0 0 40px #00f0ff;
+}
+
+.promo{
+    position: relative;
+    width: 100%;
+    height: 700px;
+    text-shadow: 0 0 10px #dd00cf, 0 0 15px #ff00de;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    font-size: 40px;
+    white-space: nowrap;
+    border-radius: 25px;
+    border: 5px solid rgb(0, 0, 0);
+}
+
+.promo::after{
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+
+}
+
+.video-bg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.promo-content{
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 0, 222, 0.4);
+    border-radius: 20px;
+    padding: 30px 60px;
+    box-shadow: 0 0 30px rgba(255, 0, 222, 0.4);
+    text-align: center;
+}
+
+.promo-content h1{
+    font-family: 'montesrrat', 'arial', sans-serif;
+    font-weight: 900;
+    color: #ffffff;
+    font-size: 48px;
+    text-transform: uppercase;
+    margin: 0 0 10px 0;
+}
+
+.promo-content h2{
+    font-family: 'montesrrat', 'arial', sans-serif;
+    font-weight: 500;
+    color: #ff00de;
+    font-size: 24px;
+    letter-spacing: 1px;
+}
+
+/* --- Новый блок авторизации --- */
+.auth-section {
+    /* Делаем его "стеклянным" и независимым */
+    background: rgba(10, 5, 20, 0.7); /* Темное стекло */
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 0, 222, 0.3); /* Легкая розовая рамка */
+    border-radius: 20px;
+    padding: 40px;
+    width: 100%;
+    max-width: 400px; /* Чтобы форма не растягивалась на весь экран */
+    margin: 40px auto; /* Центрируем на странице по горизонтали */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255, 0, 222, 0.1);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.auth-title {
+    color: #fff;
+    font-family: sans-serif;
+    font-size: 28px;
+    margin-top: 0;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 15px #ff00de; /* Неон */
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+.auth-input {
+    width: 100%;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.5); /* Темные поля ввода */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+    box-sizing: border-box; /* Важно, чтобы padding не расширял поле */
+}
+
+/* Подсветка поля при клике */
+.auth-input:focus {
+    border-color: #ff00de;
+    box-shadow: 0 0 15px rgba(255, 0, 222, 0.4);
+}
+
+/* Кнопка Войти */
+.auth-btn {
+    margin-top: 10px;
+    padding: 15px;
+    background: #ff00de; /* Яркий розовый */
+    color: #000; /* Черный текст для контраста */
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: 900;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 0 20px rgba(255, 0, 222, 0.5);
+}
+
+.auth-btn:hover {
+    background: #fff; /* При наведении становится белой */
+    box-shadow: 0 0 30px #ff00de, 0 0 50px #ff00de; /* Мощный неон */
+    transform: translateY(-2px);
+}
+
+/* Ссылки под формой */
+.auth-footer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 25px;
+}
+
+.auth-footer a {
+    color: #888;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.auth-footer a:hover {
+    color: #ff00de;
+    text-shadow: 0 0 10px #ff00de;
+}
+
+/* --- Карточка игры MSFS 2020 --- */
+.game-card {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 60px auto; /* Отступы сверху и снизу, центрирование */
+    padding: 40px;
+    
+    /* Темное стекло */
+    background: rgba(10, 5, 20, 0.6);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 0, 222, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 0, 222, 0.1);
+}
+
+/* Левая колонка с картинкой */
+.game-card-image {
+    flex: 1; /* Занимает 50% ширины */
+    position: relative;
+}
+
+.game-card-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 15px;
+    /* Неоновая тень вокруг картинки */
+    box-shadow: 0 0 20px rgba(255, 0, 222, 0.4), 0 0 40px rgba(0, 240, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Правая колонка с текстом */
+.game-card-content {
+    flex: 1; /* Занимает 50% ширины */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Заголовок игры */
+.game-card-content h1 {
+    color: #fff;
+    font-family: 'Montserrat', 'Arial', sans-serif;
+    font-size: 36px;
+    font-weight: 900;
+    margin: 0 0 15px 0;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px #ff00de, 0 0 20px #ff00de; /* Розовый неон */
+}
+
+/* Твой длинный подзаголовок */
+.game-card-content h2 {
+    color: #ccc;
+    font-family: 'Montserrat', 'Arial', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 0 0 30px 0;
+    text-shadow: none; /* Убираем лишнее свечение для читаемости */
+}
+
+/* Кнопка купить */
+.game-card-btn {
+    display: inline-block;
+    background: linear-gradient(90deg, #ff00de, #00f0ff);
+    color: #000;
+    padding: 15px 30px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 900;
+    font-size: 18px;
+    text-transform: uppercase;
+    text-align: center;
+    transition: 0.3s;
+    box-shadow: 0 0 15px rgba(255, 0, 222, 0.5);
+    align-self: flex-start; /* Кнопка не растягивается на всю ширину */
+}
+
+.game-card-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.8);
+}
+
+/* ===== MOBILE ADAPTATION ===== */
+
+@media (max-width: 768px) {
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        overflow-x: hidden;
+    }
+
+    .header {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 15px;
+    }
+
+    .header-container {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .main {
+        height: auto;
+        min-height: 100px;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    ul {
+        max-width: 100%;
+        overflow-x: auto;
+    }
+
+    .gta6 {
+        width: 100%;
+        min-height: 400px;
+        height: auto;
+        padding: 40px 15px;
+        background-position: center;
+    }
+
+    .gta6 h1 {
+        font-size: clamp(32px, 8vw, 55px);
+    }
+
+    .gta6 h2 {
+        font-size: 16px;
+    }
+
+    .gta6 h2:last-child {
+        font-size: 18px;
+    }
+
+    .button {
+        width: min(100%, 350px);
+    }
+
+    .download {
+        width: calc(100% - 20px);
+        height: auto;
+        min-height: 350px;
+        margin: 10px auto;
+    }
+
+    .download h1 {
+        font-size: clamp(35px, 8vw, 55px);
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .download-buttons {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .button-dwnld {
+        width: 100%;
+        max-width: 450px;
+        height: 110px;
+        font-size: clamp(18px, 5vw, 28px);
+        white-space: normal;
+    }
+
+    .button-dwnld:hover {
+        width: 100%;
+        height: 110px;
+    }
+
+    .promo {
+        height: auto;
+        min-height: 400px;
+        padding: 20px;
+        gap: 30px;
+        white-space: normal;
+        text-align: center;
+        font-size: 25px;
+    }
+
+    .promo-content {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .promo-content h1 {
+        font-size: clamp(25px, 6vw, 40px);
+    }
+
+    .promo-content h2 {
+        font-size: 17px;
+    }
+
+    .auth-section {
+        width: calc(100% - 30px);
+        padding: 25px 20px;
+    }
+
+    .game-card {
+        width: calc(100% - 30px);
+        flex-direction: column;
+        padding: 20px;
+        gap: 25px;
+    }
+
+    .game-card-image,
+    .game-card-content {
+        width: 100%;
+    }
+
+    .game-card-content h1 {
+        font-size: clamp(25px, 6vw, 35px);
+    }
+
+    .game-card-content h2 {
+        font-size: 17px;
+    }
+
+    .game-card-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Маленькие экраны */
+@media (max-width: 400px) {
+    .gta6 h1 {
+        font-size: 32px;
+    }
+
+    .header h1 {
+        font-size: 22px;
+    }
+
+    .download h1 {
+        font-size: 34px;
+    }
+
+    .button-dwnld {
+        font-size: 18px;
+    }
+
+    .game-card {
+        padding: 15px;
+    }
+}
+
+/* Сенсорные экраны */
+@media (hover: none) {
+    li img:hover {
+        transform: none;
+        opacity: 1;
+        padding: 0;
+    }
+}
